@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -22,7 +23,7 @@ class SimpleAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
-            is SimpleViewHolder -> holder.onBind(data[position-1], position)
+            is SimpleViewHolder -> holder.onBind(data[position-1], position, position%10 == 0)
             is SimpleHeaderViewHolder -> holder.onBind(headerText)
             is SimpleFooterViewHolder -> holder.onBind()
         }
@@ -51,8 +52,10 @@ class SimpleAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     ) {
 
         val textView:TextView = itemView.findViewById(R.id.textView)
+        val checkbox:CheckBox = itemView.findViewById(R.id.checkbox)
 
-        fun onBind(textToDisplay:String, position: Int) {
+
+        fun onBind(textToDisplay:String, position: Int, isChecked: Boolean) {
             textView.text = textToDisplay
 
             val color = itemView.context.getColor( if (position%2 == 0)
@@ -60,6 +63,7 @@ class SimpleAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             else
                 R.color.white)
             itemView.setBackgroundColor(color)
+            checkbox.isChecked = isChecked
         }
     }
 
