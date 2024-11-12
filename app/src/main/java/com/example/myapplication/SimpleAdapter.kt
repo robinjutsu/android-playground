@@ -21,7 +21,7 @@ class SimpleAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return data.size
     }
 
-    fun setData( data: List<String>){
+    fun setData( data: List<String> ){
         this.data.clear()
         this.data.addAll(data)
     }
@@ -29,6 +29,7 @@ class SimpleAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class SimpleViewHolder(parent: ViewGroup): RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.view_holder_textview,parent,false)
     ) {
+
         val textView:TextView = itemView.findViewById(R.id.textView)
 
         fun onBind(textToDisplay:String) {
