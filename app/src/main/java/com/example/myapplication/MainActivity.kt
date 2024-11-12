@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         val simpleAdapter = SimpleAdapter()
         simpleAdapter.setData(dataForAdapter)
+        //recyclerView.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
 
         recyclerView.adapter = simpleAdapter
         simpleAdapter.notifyDataSetChanged()
